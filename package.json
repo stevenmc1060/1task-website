@@ -1,0 +1,12 @@
+{
+  "name": "1task-website",
+  "version": "1.0.0",
+  "description": "1TaskAssistant + Notes - AI-Powered Thought to Action System Website",
+  "scripts": {
+    "build": "echo 'No build step required for static site' && exit 0",
+    "start": "echo 'Static site - open index.html in browser'"
+  },
+  "keywords": ["AI", "productivity", "task-management", "static-website"],
+  "author": "Steve McPherson",
+  "license": "MIT"
+}
