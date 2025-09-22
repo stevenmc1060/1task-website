@@ -159,6 +159,20 @@ h1, h2, h3, h4, h5, h6 {
     color: white;
 }
 
+/* Fix outline button visibility on dark backgrounds */
+.download .btn-outline {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: white !important;
+    border: 2px solid rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(10px);
+}
+
+.download .btn-outline:hover {
+    background: white !important;
+    color: var(--primary-color) !important;
+    border: 2px solid white !important;
+}
+
 .btn-large {
     padding: 1rem 2rem;
     font-size: 1.1rem;
@@ -320,10 +334,21 @@ h1, h2, h3, h4, h5, h6 {
     display: block;
     font-size: 2rem;
     font-weight: 700;
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--primary-color);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    line-height: 1.2;
+    min-height: 2.4rem;
+}
+
+.stat-num {
+    display: inline;
+    font-weight: 700;
+}
+
+.stat-suffix {
+    display: inline;
+    font-weight: 700;
+    opacity: 0.9;
 }
 
 .stat-label {
@@ -687,6 +712,18 @@ h1, h2, h3, h4, h5, h6 {
     padding-top: var(--space-lg);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.6);
+}
+
+.idea3-logo {
+    height: 50px;
+    width: auto;
+    margin-top: var(--space-sm);
+    opacity: 0.6;
+    transition: opacity var(--transition-base);
+}
+
+.idea3-logo:hover {
+    opacity: 1;
 }
 
 /* Responsive Design */

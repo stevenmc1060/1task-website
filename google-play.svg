@@ -1,13 +1,24 @@
 <svg width="135" height="40" viewBox="0 0 135 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="135" height="40" rx="6" fill="black"/>
+  <!-- Background -->
+  <rect width="135" height="40" rx="8" fill="black"/>
+  <rect x="0.5" y="0.5" width="134" height="39" rx="7.5" stroke="white" stroke-opacity="0.2"/>
   
-  <!-- Google Play text -->
-  <text x="67.5" y="15" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" font-weight="300">GET IT ON</text>
-  <text x="67.5" y="28" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14" font-weight="600">Google Play</text>
+  <!-- Google Play Triangle -->
+  <g transform="translate(8, 8)">
+    <!-- Left side - Blue/Cyan -->
+    <path d="M3 4.5L12 13.5L3 22.5C2.2 21.7 2.2 20.3 3 19.5V4.5Z" fill="#32BBFF"/>
+    
+    <!-- Top side - Yellow -->
+    <path d="M3 4.5L12 13.5L18 10.5C19.2 9.9 19.2 8.1 18 7.5L3 4.5Z" fill="#FFD900"/>
+    
+    <!-- Right side - Red -->
+    <path d="M12 13.5L18 17.5C19.2 16.9 19.2 15.1 18 14.5L12 13.5Z" fill="#FF6B6B"/>
+    
+    <!-- Bottom side - Green -->
+    <path d="M3 22.5L12 13.5L18 17.5C19.2 18.1 19.2 19.9 18 20.5L3 22.5Z" fill="#4ADE80"/>
+  </g>
   
-  <!-- Google Play logo simplified -->
-  <polygon points="22,10 22,24 28,17" fill="#34A853"/>
-  <polygon points="22,10 28,17 32,13" fill="#EA4335"/>
-  <polygon points="22,24 28,17 32,21" fill="#FBBC04"/>
-  <polygon points="28,17 32,13 32,21" fill="#4285F4"/>
+  <!-- Text -->
+  <text x="30" y="15" fill="white" font-family="Product Sans, Roboto, Arial" font-size="7.5" font-weight="400">GET IT ON</text>
+  <text x="30" y="28" fill="white" font-family="Product Sans, Roboto, Arial" font-size="15" font-weight="500">Google Play</text>
 </svg>

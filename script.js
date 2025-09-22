@@ -251,7 +251,7 @@ class Website {
 
         // Stats counter animation
         const stats = document.querySelectorAll('.stat-number');
-        const countUpAnimation = (element, target) => {
+        const countUpAnimation = (element, target, suffix) => {
             const increment = target / 60; // 60 frames
             let current = 0;
             const timer = setInterval(() => {
@@ -261,12 +261,16 @@ class Website {
                     clearInterval(timer);
                 }
                 
-                if (target.toString().includes('x')) {
-                    element.textContent = Math.floor(current) + 'x';
-                } else if (target.toString().includes('%')) {
-                    element.textContent = Math.floor(current) + '%';
+                // Update only the number part, preserve the suffix
+                const numSpan = element.querySelector('span:first-child') || element;
+                const suffixSpan = element.querySelector('span:last-child');
+                
+                if (suffixSpan && suffixSpan !== numSpan) {
+                    // We have separate spans for number and suffix
+                    numSpan.textContent = Math.floor(current);
                 } else {
-                    element.textContent = target;
+                    // Fallback to old method
+                    element.textContent = Math.floor(current) + (suffix || '');
                 }
             }, 16);
         };
@@ -275,10 +279,26 @@ class Website {
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const text = entry.target.textContent;
-                    const number = parseInt(text);
+                    const numSpan = entry.target.querySelector('span:first-child');
+                    const suffixSpan = entry.target.querySelector('span:last-child');
+                    
+                    let number, suffix = '';
+                    
+                    if (numSpan && suffixSpan && suffixSpan !== numSpan) {
+                        // New structure with separate spans
+                        number = parseInt(numSpan.textContent);
+                        suffix = suffixSpan.textContent;
+                    } else {
+                        // Fallback to old structure
+                        const text = entry.target.textContent;
+                        number = parseInt(text);
+                        if (text.includes('x')) suffix = 'x';
+                        else if (text.includes('%')) suffix = '%';
+                        else if (text.includes('/')) suffix = text.substring(text.indexOf('/'));
+                    }
+                    
                     if (!isNaN(number)) {
-                        countUpAnimation(entry.target, number);
+                        countUpAnimation(entry.target, number, suffix);
                     }
                     statsObserver.unobserve(entry.target);
                 }
