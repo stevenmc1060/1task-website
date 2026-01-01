@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="1TaskAssistant + Notes - The first thought to action system built on AI. Transform your ideas into reality instantly.">
+    <meta name="description" content="OneTaskAssistant - The first thought to action system built on AI. Turn your ideas into organized tasks with minimal friction.">
     <meta name="keywords" content="AI assistant, productivity, task management, notes, thought to action">
     <title>OneTaskAssistant | AI-Powered Thought to Action System</title>
     
     <!-- Preload critical resources -->
     <link rel="preload" href="styles.css" as="style">
-    <link rel="preload" href="script.js" as="script">
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
@@ -34,8 +33,9 @@
                 <a href="#features" class="nav-link">Features</a>
                 <a href="#how-it-works" class="nav-link">How It Works</a>
                 <a href="https://onboard.1taskassistant.com" class="nav-link">Register</a>
-                <a href="https://app.1taskassistant.com" class="nav-link">Login</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <a href="https://app.1taskassistant.com" class="nav-link" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 0.5rem 1rem; border-radius: 0.5rem; color: white !important;">Launch OneTask</a>
+                <a href="https://notes.1taskassistant.com" class="nav-link" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 0.5rem 1rem; border-radius: 0.5rem; color: white !important;">Launch Notes</a>
+                <a href="#" onclick="openGeneralContactModal(); return false;" class="nav-link">Contact</a>
             </div>
             <div class="nav-toggle">
                 <span></span>
@@ -53,25 +53,25 @@
                     The First <span class="gradient-text">Thought to Action</span> System Built on AI
                 </h1>
                 <p class="hero-description">
-                    Transform your thoughts into organized tasks and actionable insights instantly. 
-                    OneTaskAssistant revolutionizes productivity with AI-powered intelligence.
+                    Turn thoughts into organized tasks and actionable insights with minimal friction. 
+                    OneTaskAssistant removes the busy work between thinking and doing.
                 </p>
                 <div class="hero-buttons">
-                    <button class="btn btn-primary">Get Started Free</button>
-                    <button class="btn btn-secondary">Watch Demo</button>
+                    <button class="btn btn-primary" onclick="openModal()">Get Started Free</button>
+                    <button class="btn btn-secondary">Getting Started Demo</button>
                 </div>
                 <div class="hero-stats">
                     <div class="stat">
-                        <div style="color: #6366f1; font-size: 2rem; font-weight: bold; font-family: Arial, sans-serif;">10x</div>
-                        <span class="stat-label">Faster Task Creation</span>
+                        <div style="color: #6366f1; font-size: 1.5rem; font-weight: 600; font-family: Arial, sans-serif;">Rapid</div>
+                        <span class="stat-label">Task Creation</span>
                     </div>
                     <div class="stat">
-                        <div style="color: #6366f1; font-size: 2rem; font-weight: bold; font-family: Arial, sans-serif;">99%</div>
-                        <span class="stat-label">User Satisfaction</span>
+                        <div style="color: #6366f1; font-size: 1.5rem; font-weight: 600; font-family: Arial, sans-serif;">Shaped by</div>
+                        <span class="stat-label">Early User Feedback</span>
                     </div>
                     <div class="stat">
-                        <div style="color: #6366f1; font-size: 2rem; font-weight: bold; font-family: Arial, sans-serif;">24/7</div>
-                        <span class="stat-label">AI Assistant</span>
+                        <div style="color: #6366f1; font-size: 1.5rem; font-weight: 600; font-family: Arial, sans-serif;">Always-On</div>
+                        <span class="stat-label">AI Assistance</span>
                     </div>
                 </div>
             </div>
@@ -104,7 +104,7 @@
             <div class="section-header">
                 <h2 class="section-title">Intelligent Features</h2>
                 <p class="section-description">
-                    Experience the power of AI-driven productivity tools designed for modern professionals
+                    AI-driven productivity tools designed to reduce friction between thinking and doing
                 </p>
             </div>
             <div class="features-grid">
@@ -199,14 +199,17 @@
     <section id="download" class="download">
         <div class="container">
             <div class="download-content">
-                <h2 class="download-title">Ready to Transform Your Productivity?</h2>
+                <h2 class="download-title">Ready to Experience Thought to Action?</h2>
                 <p class="download-description">
-                    Join thousands of professionals who have revolutionized their workflow with AI-powered task management.
+                    Currently in Founder Preview. Join early users shaping the future of AI-powered task management.<br>
+                    Request a preview code: <a href="mailto:stevenmc@idea3.io" style="color: #a5b4fc; text-decoration: underline;">stevenmc@idea3.io</a>
                 </p>
                 <div class="download-buttons">
                     <button class="btn btn-primary btn-large">Register for App</button>
                     <button class="btn btn-outline btn-large" style="background: rgba(255, 255, 255, 0.2) !important; color: white !important; border: 2px solid white !important;">Login to Web App</button>
                 </div>
+                <p style="margin-top: 2rem; opacity: 0.8; font-size: 0.95rem;">Coming soon to Apple App Store and Google Play</p>
+                <!-- Mobile apps coming soon
                 <div class="platform-links">
                     <a href="#" class="platform-link">
                         <img src="app-store.svg" alt="Download on App Store">
@@ -215,6 +218,7 @@
                         <img src="google-play.svg" alt="Get it on Google Play">
                     </a>
                 </div>
+                -->
             </div>
         </div>
     </section>
@@ -231,7 +235,7 @@
                     <a href="#" class="footer-link">Privacy</a>
                     <a href="#" class="footer-link">Terms</a>
                     <a href="#" class="footer-link">Support</a>
-                    <a href="#contact" class="footer-link">Contact</a>
+                    <a href="#" onclick="openGeneralContactModal(); return false;" class="footer-link">Contact</a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -241,6 +245,231 @@
         </div>
     </footer>
 
-    <!-- <script src="script.js"></script> -->
+    <!-- Preview Request Modal -->
+    <div id="previewModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closePreviewModal()">&times;</span>
+            <h2 style="margin-bottom: 1rem; color: #1f2937;">Request Founder Preview Access</h2>
+            <p style="margin-bottom: 1.5rem; color: #6b7280;">Send us a message to request your preview code</p>
+            <div id="previewFormMessage" style="display: none; padding: 0.75rem; margin-bottom: 1rem; border-radius: 0.5rem; font-size: 0.95rem;"></div>
+            <form id="previewForm" onsubmit="submitPreviewForm(event)">
+                <input type="hidden" name="access_key" value="42fb17c8-6c8e-404d-b3be-e3b38e2bd49e">
+                <input type="hidden" name="subject" value="OneTaskAssistant Founder Preview Request">
+                <input type="hidden" name="from_name" value="OneTaskAssistant Website">
+                <input type="text" name="name" placeholder="Your Name" required style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #d1d5db; border-radius: 0.5rem; font-size: 1rem;">
+                <input type="email" name="email" placeholder="Your Email" required style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #d1d5db; border-radius: 0.5rem; font-size: 1rem;">
+                <textarea name="message" placeholder="Tell us why you're interested in OneTaskAssistant..." rows="4" required style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #d1d5db; border-radius: 0.5rem; font-size: 1rem; resize: vertical;"></textarea>
+                <button type="submit" id="previewSubmitBtn" class="btn btn-primary" style="width: 100%; padding: 0.875rem;">Send Request</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- General Contact Modal -->
+    <div id="generalContactModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeGeneralContactModal()">&times;</span>
+            <h2 style="margin-bottom: 1rem; color: #1f2937;">Contact Us</h2>
+            <p style="margin-bottom: 1.5rem; color: #6b7280;">We'd love to hear from you</p>
+            <div id="contactFormMessage" style="display: none; padding: 0.75rem; margin-bottom: 1rem; border-radius: 0.5rem; font-size: 0.95rem;"></div>
+            <form id="generalContactForm" onsubmit="submitContactForm(event)">
+                <input type="hidden" name="access_key" value="42fb17c8-6c8e-404d-b3be-e3b38e2bd49e">
+                <input type="hidden" name="from_name" value="OneTaskAssistant Website">
+                <select name="contact_type" required style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #d1d5db; border-radius: 0.5rem; font-size: 1rem; background-color: white;">
+                    <option value="">Select Inquiry Type</option>
+                    <option value="Support">Support</option>
+                    <option value="Feedback">Feedback</option>
+                    <option value="Partnership">Partnership</option>
+                    <option value="Feature Request">Feature Request</option>
+                    <option value="Bug Report">Bug Report</option>
+                    <option value="Press/Media">Press/Media</option>
+                    <option value="General Inquiry">General Inquiry</option>
+                </select>
+                <input type="text" name="name" placeholder="Your Name" required style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #d1d5db; border-radius: 0.5rem; font-size: 1rem;">
+                <input type="email" name="email" placeholder="Your Email" required style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #d1d5db; border-radius: 0.5rem; font-size: 1rem;">
+                <textarea name="message" placeholder="Your message..." rows="4" required style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #d1d5db; border-radius: 0.5rem; font-size: 1rem; resize: vertical;"></textarea>
+                <button type="submit" id="contactSubmitBtn" class="btn btn-primary" style="width: 100%; padding: 0.875rem;">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 1rem;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: slideIn 0.3s;
+        }
+
+        .modal-close {
+            color: #9ca3af;
+            position: absolute;
+            right: 1.5rem;
+            top: 1.5rem;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: #1f2937;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+
+    <script>
+        function openModal() {
+            document.getElementById('previewModal').style.display = 'block';
+        }
+
+        function closePreviewModal() {
+            document.getElementById('previewModal').style.display = 'none';
+            document.getElementById('previewFormMessage').style.display = 'none';
+        }
+
+        function openGeneralContactModal() {
+            document.getElementById('generalContactModal').style.display = 'block';
+        }
+
+        function closeGeneralContactModal() {
+            document.getElementById('generalContactModal').style.display = 'none';
+            document.getElementById('contactFormMessage').style.display = 'none';
+        }
+
+        async function submitPreviewForm(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            const submitBtn = document.getElementById('previewSubmitBtn');
+            const messageDiv = document.getElementById('previewFormMessage');
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            messageDiv.style.display = 'none';
+            
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    messageDiv.style.display = 'block';
+                    messageDiv.style.backgroundColor = '#d1fae5';
+                    messageDiv.style.color = '#065f46';
+                    messageDiv.style.border = '1px solid #6ee7b7';
+                    messageDiv.textContent = 'Thank you! Your request has been sent successfully.';
+                    form.reset();
+                    
+                    setTimeout(() => {
+                        closePreviewModal();
+                    }, 2000);
+                } else {
+                    throw new Error(data.message || 'Submission failed');
+                }
+            } catch (error) {
+                messageDiv.style.display = 'block';
+                messageDiv.style.backgroundColor = '#fee2e2';
+                messageDiv.style.color = '#991b1b';
+                messageDiv.style.border = '1px solid #fca5a5';
+                messageDiv.textContent = 'Oops! Something went wrong. Please try again or email us directly at stevenmc@idea3.io';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Request';
+            }
+        }
+
+        async function submitContactForm(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            const contactType = formData.get('contact_type');
+            
+            // Set subject based on contact type
+            formData.set('subject', `OneTaskAssistant ${contactType}`);
+            
+            const submitBtn = document.getElementById('contactSubmitBtn');
+            const messageDiv = document.getElementById('contactFormMessage');
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            messageDiv.style.display = 'none';
+            
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    messageDiv.style.display = 'block';
+                    messageDiv.style.backgroundColor = '#d1fae5';
+                    messageDiv.style.color = '#065f46';
+                    messageDiv.style.border = '1px solid #6ee7b7';
+                    messageDiv.textContent = 'Thank you! Your message has been sent successfully.';
+                    form.reset();
+                    
+                    setTimeout(() => {
+                        closeGeneralContactModal();
+                    }, 2000);
+                } else {
+                    throw new Error(data.message || 'Submission failed');
+                }
+            } catch (error) {
+                messageDiv.style.display = 'block';
+                messageDiv.style.backgroundColor = '#fee2e2';
+                messageDiv.style.color = '#991b1b';
+                messageDiv.style.border = '1px solid #fca5a5';
+                messageDiv.textContent = 'Oops! Something went wrong. Please try again or email us directly at stevenmc@idea3.io';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+            }
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const previewModal = document.getElementById('previewModal');
+            const generalModal = document.getElementById('generalContactModal');
+            if (event.target == previewModal) {
+                closePreviewModal();
+            }
+            if (event.target == generalModal) {
+                closeGeneralContactModal();
+            }
+        }
+    </script>
 </body>
 </html>
