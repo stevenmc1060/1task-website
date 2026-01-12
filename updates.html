@@ -170,7 +170,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
+                <a href="index.html" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none;">
                     <img src="onetask-logo.png" alt="OneTaskAssistant" class="logo">
                     <span class="logo-text">OneTaskAssistant</span>
                 </a>
@@ -196,8 +196,58 @@
         <div class="updates-container">
             <div class="updates-header">
                 <h1 class="updates-title">Recent Updates & Improvements</h1>
-                <p class="updates-date">January 10, 2026</p>
+                <p class="updates-date">January 11, 2026</p>
             </div>
+
+            <!-- Goals Page & Reflection Assistant Updates -->
+            <div class="update-section">
+                <h2>🎯 Comprehensive Goals Page & Reflection Assistant Improvements</h2>
+                <div class="status-badge">✅ Live in Production</div>
+                <p>A major update spanning the Reflection Assistant (chat), Goals page technical fixes, and visual design enhancements.</p>
+                
+                <h3>Reflection Assistant Enhancements</h3>
+                <ul>
+                    <li><strong>Rebranded "AI Assistant" to "Reflection Assistant"</strong> - clearer purpose communication aligned with helping users reflect on goals and progress</li>
+                    <li><strong>Time-Aware Reflection Queries</strong> - intelligent context detection for time-based queries like "today", "this week", "this month", and "this year" with automatic date range filtering</li>
+                    <li><strong>Welcome Message & Reflection Prompts</strong> - friendly welcome with four suggested reflection starters to reduce friction and guide meaningful conversations</li>
+                    <li><strong>Chat Performance Fix</strong> - eliminated flickering during updates with React.memo optimization for smooth, flicker-free experience</li>
+                    <li><strong>Automatic Conversation Clearing</strong> - fresh start for each reflection session with no context carryover between sessions</li>
+                    <li><strong>Table Rendering Fix</strong> - resolved crashes when AI responses included tables by replacing undefined CustomTableCell component</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h3>Time-Aware Reflection Examples</h3>
+                    <p>The Reflection Assistant now understands questions like:</p>
+                    <ul>
+                        <li>"What should I focus on today?"</li>
+                        <li>"How am I progressing on my weekly goals?"</li>
+                        <li>"Show me insights from my recent tasks"</li>
+                        <li>"Help me reflect on my quarterly goals"</li>
+                    </ul>
+                </div>
+
+                <h3>Technical Fixes</h3>
+                <ul>
+                    <li><strong>Preview Code Check Optimization</strong> - eliminated duplicate API calls on page load with ref-based guards to prevent simultaneous duplicate checks</li>
+                    <li><strong>Goal State Management Fix</strong> - frontend now uses API response for state updates instead of sent data, making backend bugs visible immediately</li>
+                    <li><strong>Backend Bug Documentation</strong> - discovered and documented that backend receives target_year but doesn't persist it (returns old value)</li>
+                </ul>
+
+                <h3>Visual Design Enhancements</h3>
+                <ul>
+                    <li><strong>Goals Header Layout</strong> - added flex layout with 32px gap, increased chip padding and border radius for modern look</li>
+                    <li><strong>Horizon Band Modernization</strong> - subtle gradients, box shadows that deepen on hover, smooth transitions, proper overflow handling</li>
+                    <li><strong>Section Title Typography</strong> - small uppercase (11px) with wide letter spacing and bold weight for professional label style</li>
+                    <li><strong>Toggle Icon Enhancement</strong> - bordered box with purple accent on hover, perfect centering, smooth transitions</li>
+                    <li><strong>Count Badges</strong> - pill design with purple accent matching overall theme</li>
+                    <li><strong>Add Button Enhancement</strong> - purple accent with hover animation and subtle lift effect</li>
+                    <li><strong>Content Area Spacing</strong> - proper padding and clean separation from header</li>
+                </ul>
+
+                <p><strong>Impact:</strong> 152 lines changed in pages.css (94 insertions, 58 deletions), professional polished appearance, better visual hierarchy, improved usability and affordance.</p>
+            </div>
+
+            <div class="divider"></div>
 
             <!-- Habits Page & Chat Modal Updates -->
             <div class="update-section">
@@ -254,13 +304,11 @@
             <!-- Deployment Status -->
             <div class="update-section">
                 <h2>Deployment Status</h2>
-                <div class="status-badge">✅ Live in All Environments</div>
+                <div class="status-badge">✅ Live in Production</div>
                 <ul style="margin-top: 1.5rem;">
                     <li><strong>Production:</strong> app.1taskassistant.com</li>
-                    <li><strong>Staging:</strong> staging.1taskassistant.com</li>
-                    <li><strong>Development:</strong> dev.1taskassistant.com</li>
                 </ul>
-                <p>All updates have been deployed via automated GitHub Actions workflows to ensure consistency across environments.</p>
+                <p>All updates have been deployed to production via automated GitHub Actions workflows.</p>
             </div>
 
             <div class="divider"></div>
@@ -358,13 +406,11 @@
             <!-- Deployment Status -->
             <div class="update-section">
                 <h2>Deployment Status</h2>
-                <div class="status-badge">✅ Live in All Environments</div>
+                <div class="status-badge">✅ Live in Production</div>
                 <ul style="margin-top: 1.5rem;">
                     <li><strong>Production:</strong> app.1taskassistant.com</li>
-                    <li><strong>Staging:</strong> staging.1taskassistant.com</li>
-                    <li><strong>Development:</strong> dev.1taskassistant.com</li>
                 </ul>
-                <p>All updates have been deployed via automated GitHub Actions workflows to ensure consistency across environments.</p>
+                <p>All updates have been deployed to production via automated GitHub Actions workflows.</p>
             </div>
 
             <div class="divider"></div>
