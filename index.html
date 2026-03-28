@@ -33,9 +33,7 @@
                 <a href="#features" class="nav-link">Features</a>
                 <a href="#how-it-works" class="nav-link">How It Works</a>
                 <a href="updates.html" class="nav-link">Updates</a>
-                <a href="https://onboard.1taskassistant.com" class="nav-link">Register</a>
                 <a href="https://app.1taskassistant.com" class="nav-link" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 0.5rem 1rem; border-radius: 0.5rem; color: white !important;">Launch OneTask</a>
-                <a href="https://notes.1taskassistant.com" class="nav-link" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 0.5rem 1rem; border-radius: 0.5rem; color: white !important;">Launch Notes</a>
                 <a href="#" onclick="openGeneralContactModal(); return false;" class="nav-link">Contact</a>
             </div>
             <div class="nav-toggle">
@@ -58,7 +56,7 @@
                     OneTaskAssistant removes the busy work between thinking and doing.
                 </p>
                 <div class="hero-buttons">
-                    <button class="btn btn-primary" onclick="openModal()">Get Started Free</button>
+                    <button class="btn btn-primary" onclick="openPreviewAccessModal()">Get Started Free</button>
                     <a href="https://youtu.be/WZxIe3hn1Nk" target="_blank" class="btn btn-secondary">Getting Started Demo</a>
                 </div>
                 <div class="hero-stats">
@@ -202,11 +200,10 @@
             <div class="download-content">
                 <h2 class="download-title">Ready to Experience Thought to Action?</h2>
                 <p class="download-description">
-                    Currently in Founder Preview. Join early users shaping the future of AI-powered task management.<br>
-                    Request a preview code: <a href="mailto:stevenmc@idea3.io" style="color: #a5b4fc; text-decoration: underline;">stevenmc@idea3.io</a>
+                    Currently in Preview. Join early users shaping the future of AI-powered task management.
                 </p>
                 <div class="download-buttons">
-                    <a href="https://onboard.1taskassistant.com" class="btn btn-primary btn-large">Register for App</a>
+                    <a href="#" onclick="openPreviewAccessModal(); return false;" class="btn btn-primary btn-large">Register for App</a>
                     <a href="https://app.1taskassistant.com" class="btn btn-outline btn-large" style="background: rgba(255, 255, 255, 0.2) !important; color: white !important; border: 2px solid white !important;">Login to Web App</a>
                 </div>
                 <p style="margin-top: 2rem; opacity: 0.8; font-size: 0.95rem;">Coming soon to Apple App Store and Google Play</p>
@@ -250,7 +247,7 @@
     <div id="previewModal" class="modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closePreviewModal()">&times;</span>
-            <h2 style="margin-bottom: 1rem; color: #1f2937;">Request Founder Preview Access</h2>
+            <h2 style="margin-bottom: 1rem; color: #1f2937;">Request Access to Preview</h2>
             <p style="margin-bottom: 1.5rem; color: #6b7280;">Send us a message to request your preview code</p>
             <div id="previewFormMessage" style="display: none; padding: 0.75rem; margin-bottom: 1rem; border-radius: 0.5rem; font-size: 0.95rem;"></div>
             <form id="previewForm" onsubmit="submitPreviewForm(event)">
@@ -259,7 +256,7 @@
                 <input type="hidden" name="from_name" value="OneTaskAssistant Website">
                 <input type="text" name="name" placeholder="Your Name" required style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #d1d5db; border-radius: 0.5rem; font-size: 1rem;">
                 <input type="email" name="email" placeholder="Your Email" required style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #d1d5db; border-radius: 0.5rem; font-size: 1rem;">
-                <textarea name="message" placeholder="Tell us why you're interested in OneTaskAssistant..." rows="4" required style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #d1d5db; border-radius: 0.5rem; font-size: 1rem; resize: vertical;"></textarea>
+                <textarea name="message" placeholder="Where did you hear about OneTask?" rows="4" required style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #d1d5db; border-radius: 0.5rem; font-size: 1rem; resize: vertical;"></textarea>
                 <button type="submit" id="previewSubmitBtn" class="btn btn-primary" style="width: 100%; padding: 0.875rem;">Send Request</button>
             </form>
         </div>
@@ -345,8 +342,13 @@
     </style>
 
     <script>
-        function openModal() {
+        function openPreviewAccessModal() {
             document.getElementById('previewModal').style.display = 'block';
+        }
+
+        // Backward-compatible alias for any existing calls.
+        function openModal() {
+            openPreviewAccessModal();
         }
 
         function closePreviewModal() {
