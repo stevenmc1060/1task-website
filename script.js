@@ -467,24 +467,220 @@ const animationCSS = `
     }
 `;
 
-// Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    // Add animation styles
-    const style = document.createElement('style');
-    style.textContent = animationCSS;
-    document.head.appendChild(style);
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const dropdown = document.querySelector('.nav-dropdown');
+    const dropdownToggle = dropdown?.querySelector('.nav-dropdown-toggle');
+    const dropdownMenu = dropdown?.querySelector('.nav-dropdown-menu');
+    const dropdownLinks = [...(dropdownMenu?.querySelectorAll('a') ?? [])];
+    let dropdownOpenedByMouse = false;
 
-    // Initialize website functionality
-    new Website();
+    const closeMenu = () => {
+        navMenu?.classList.remove('active');
+        navToggle?.setAttribute('aria-expanded', 'false');
+        navToggle?.setAttribute('aria-label', 'Open navigation');
+        document.body.classList.remove('menu-open');
+        closeDropdown();
+    };
 
-    // Add loading class to trigger animations
-    document.body.classList.add('loading');
+    const openDropdown = (focusFirst = false) => {
+        if (!dropdownMenu || !dropdownToggle) return;
+        dropdownMenu.hidden = false;
+        dropdownToggle.setAttribute('aria-expanded', 'true');
+        if (focusFirst) dropdownLinks[0]?.focus();
+    };
 
-    // Remove loading class after a short delay
-    setTimeout(() => {
-        document.body.classList.remove('loading');
-    }, 100);
+    const closeDropdown = (restoreFocus = false) => {
+        if (!dropdownMenu || !dropdownToggle) return;
+        dropdownMenu.hidden = true;
+        dropdownToggle.setAttribute('aria-expanded', 'false');
+        if (restoreFocus) dropdownToggle.focus();
+    };
+
+    navToggle?.addEventListener('click', () => {
+        const isOpen = navMenu.classList.toggle('active');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+        navToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+        document.body.classList.toggle('menu-open', isOpen);
+        if (!isOpen) closeDropdown();
+    });
+
+    dropdownToggle?.addEventListener('click', event => {
+        if (dropdownToggle.getAttribute('aria-expanded') === 'true' && (!dropdownOpenedByMouse || event.detail === 0)) closeDropdown();
+        else openDropdown();
+    });
+
+    dropdownToggle?.addEventListener('keydown', event => {
+        if (event.key === 'ArrowDown') {
+            event.preventDefault();
+            openDropdown(true);
+        }
+    });
+
+    dropdownMenu?.addEventListener('keydown', event => {
+        const currentIndex = dropdownLinks.indexOf(document.activeElement);
+        if (event.key === 'Escape') {
+            event.preventDefault();
+            closeDropdown(true);
+            return;
+        }
+
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+            event.preventDefault();
+            const direction = event.key === 'ArrowDown' ? 1 : -1;
+            const nextIndex = (currentIndex + direction + dropdownLinks.length) % dropdownLinks.length;
+            dropdownLinks[nextIndex]?.focus();
+        }
+
+        if (event.key === 'Home' || event.key === 'End') {
+            event.preventDefault();
+            dropdownLinks[event.key === 'Home' ? 0 : dropdownLinks.length - 1]?.focus();
+        }
+    });
+
+    dropdown?.addEventListener('pointerenter', event => {
+        if (event.pointerType === 'mouse') {
+            dropdownOpenedByMouse = true;
+            openDropdown();
+        }
+    });
+
+    dropdown?.addEventListener('pointerleave', event => {
+        if (event.pointerType === 'mouse') {
+            dropdownOpenedByMouse = false;
+            if (!dropdown.contains(document.activeElement)) closeDropdown();
+        }
+    });
+
+    dropdown?.addEventListener('focusout', event => {
+        if (!dropdown.contains(event.relatedTarget)) closeDropdown();
+    });
+
+    navMenu?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('click', event => {
+        if (dropdown && !dropdown.contains(event.target)) closeDropdown();
+    });
+
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+            closeMenu();
+            const previewModal = document.getElementById('previewModal');
+            const contactModal = document.getElementById('generalContactModal');
+            if (previewModal?.style.display === 'block' && typeof closePreviewModal === 'function') closePreviewModal();
+            if (contactModal?.style.display === 'block' && typeof closeGeneralContactModal === 'function') closeGeneralContactModal();
+        }
+
+        if (event.key === 'Tab') {
+            const openModal = document.querySelector('.modal[style*="display: block"]');
+            if (!openModal) return;
+            const focusable = [...openModal.querySelectorAll('button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href]')];
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault();
+                last.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault();
+                first.focus();
+            }
+        }
+    });
+
+    const revealTargets = document.querySelectorAll('.story-section, .capture-section, .intelligence-section, .priorities-section, .how-it-works, .payoff-section, .final-cta');
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.body.classList.add('motion-ready');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08 });
+        revealTargets.forEach(target => observer.observe(target));
+    }
 });
+
+const lastActiveElement = { value: null };
+
+function showModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (!modal) return;
+    lastActiveElement.value = document.activeElement;
+    modal.style.display = 'block';
+    modal.querySelector('.modal-close')?.focus();
+}
+
+function hideModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (!modal) return;
+    modal.style.display = 'none';
+    lastActiveElement.value?.focus?.();
+}
+
+function openPreviewAccessModal() {
+    showModal('previewModal');
+}
+
+function closePreviewModal() {
+    hideModal('previewModal');
+}
+
+function openGeneralContactModal() {
+    showModal('generalContactModal');
+}
+
+function closeGeneralContactModal() {
+    hideModal('generalContactModal');
+}
+
+function setFormMessage(formMessageId, text, type) {
+    const container = document.getElementById(formMessageId);
+    if (!container) return;
+
+    container.textContent = text;
+    container.className = `form-message ${type}`;
+}
+
+function submitPreviewForm(event) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const name = formData.get('name')?.toString().trim();
+    const email = formData.get('email')?.toString().trim();
+
+    if (!name || !email) {
+        setFormMessage('previewFormMessage', 'Please complete your name and email so we can send your preview access.', 'error');
+        return;
+    }
+
+    setFormMessage('previewFormMessage', `Thanks, ${name}. Your preview request has been captured and we’ll be in touch at ${email}.`, 'success');
+    form.reset();
+}
+
+function submitContactForm(event) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const name = formData.get('name')?.toString().trim();
+    const email = formData.get('email')?.toString().trim();
+
+    if (!name || !email) {
+        setFormMessage('contactFormMessage', 'Please add your name and email before sending your message.', 'error');
+        return;
+    }
+
+    setFormMessage('contactFormMessage', `Thanks, ${name}. Your note is ready to send and we’ll follow up at ${email}.`, 'success');
+    form.reset();
+}
+
+window.openPreviewAccessModal = openPreviewAccessModal;
+window.closePreviewModal = closePreviewModal;
+window.openGeneralContactModal = openGeneralContactModal;
+window.closeGeneralContactModal = closeGeneralContactModal;
+window.submitPreviewForm = submitPreviewForm;
+window.submitContactForm = submitContactForm;
 
 // Export for potential module use
 if (typeof module !== 'undefined' && module.exports) {

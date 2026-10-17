@@ -3,165 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Latest updates and improvements to OneTaskAssistant">
-    <title>Updates | OneTaskAssistant</title>
+    <meta name="description" content="Product updates and release notes from 1task.">
+    <meta name="theme-color" content="#f3f6fa">
+    <title>Updates | 1task</title>
     
-    <link rel="stylesheet" href="styles.css">
+    <link rel="preload" href="styles.css?v=18" as="style">
+    <link rel="stylesheet" href="styles.css?v=18">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
     <style>
-        .updates-page {
-            padding: 120px 0 80px;
-            background: linear-gradient(180deg, #f9fafb 0%, #ffffff 100%);
-        }
-        
-        .updates-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        .updates-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .updates-title {
-            font-size: 3rem;
-            font-weight: 800;
-            color: #1f2937;
-            margin-bottom: 1rem;
-        }
-        
-        .updates-date {
-            font-size: 1.125rem;
-            color: #6b7280;
-            font-style: italic;
-        }
-        
-        .update-section {
-            background: white;
-            border-radius: 1rem;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-        
-        .update-section h2 {
-            font-size: 1.875rem;
-            font-weight: 700;
-            color: #1f2937;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .update-section h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #374151;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-        
-        .update-section p {
-            font-size: 1.125rem;
-            line-height: 1.75;
-            color: #4b5563;
-            margin-bottom: 1rem;
-        }
-        
-        .update-section ul {
-            list-style: none;
-            padding: 0;
-            margin: 1.5rem 0;
-        }
-        
-        .update-section li {
-            font-size: 1.125rem;
-            line-height: 1.75;
-            color: #4b5563;
-            padding-left: 2rem;
-            margin-bottom: 0.75rem;
-            position: relative;
-        }
-        
-        .update-section li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #6366f1;
-            font-weight: bold;
-            font-size: 1.25rem;
-        }
-        
-        .highlight-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 0.75rem;
-            margin: 2rem 0;
-        }
-        
-        .highlight-box h3 {
-            color: white;
-            margin-top: 0;
-        }
-        
-        .highlight-box ul li {
-            color: rgba(255, 255, 255, 0.95);
-        }
-        
-        .highlight-box ul li:before {
-            color: #fbbf24;
-        }
-        
-        .status-badge {
-            display: inline-block;
-            background: #d1fae5;
-            color: #065f46;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            font-size: 0.875rem;
-            margin-top: 1rem;
-        }
-        
-        .divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
-            margin: 3rem 0;
-        }
-        
+        .nav-link[aria-current="page"] { color: var(--primary-color); }
+        .nav-link[aria-current="page"]::after { width: 100%; }
+        .updates-page { min-height: 100vh; padding: 132px 0 96px; background: var(--background); }
+        .updates-container { width: min(920px, calc(100% - 64px)); margin: 0 auto; padding: 0; }
+        .updates-header { margin-bottom: 22px; padding-bottom: 30px; border-bottom: 1px solid var(--border); }
+        .updates-header .eyebrow { margin-bottom: 12px; }
+        .updates-title { max-width: 740px; margin-bottom: 12px; color: var(--text-primary); font-family: var(--font-display); font-size: 50px; font-weight: 400; line-height: 1.08; }
+        .updates-intro { max-width: 680px; color: var(--text-secondary); font-size: 15px; line-height: 1.6; }
+        .update-section { padding: 32px 0 36px; background: transparent; border-bottom: 1px solid var(--border); border-radius: 0; box-shadow: none; }
+        .update-section h2 { display: block; margin: 0 0 12px; color: var(--text-primary); font-family: var(--font-display); font-size: 26px; font-weight: 400; line-height: 1.2; }
+        .update-dates { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 0 0 16px; }
+        .update-dates div { display: flex; align-items: baseline; gap: 7px; }
+        .update-dates span { color: var(--text-muted); font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+        .update-dates time, .update-dates .date-unrecorded { color: var(--text-secondary); font-size: 12px; }
+        .update-dates .date-unrecorded { font-style: italic; }
+        .update-section h3 { margin: 26px 0 10px; color: var(--text-primary); font-size: 15px; font-weight: 700; }
+        .update-section p { margin: 12px 0; color: var(--text-secondary); font-size: 14px; line-height: 1.75; }
+        .update-section a:not(.btn) { color: var(--primary-color); font-weight: 600; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+        .update-section ul { margin: 14px 0 18px; padding: 0; list-style: none; }
+        .update-section li { position: relative; margin: 8px 0; padding-left: 19px; color: var(--text-secondary); font-size: 14px; line-height: 1.7; }
+        .update-section li::before { position: absolute; top: 0.68em; left: 1px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-color); content: ""; }
+        .highlight-box { margin: 22px 0; padding: 16px 20px; border-left: 2px solid var(--secondary-color); background: var(--background-secondary); color: var(--text-primary); }
+        .highlight-box h3 { margin: 0 0 8px; }
+        .highlight-box p { margin: 8px 0; }
+        .highlight-box ul { margin-bottom: 4px; }
+        .status-badge { display: inline-flex; margin: 3px 0 10px; padding: 5px 9px; border: 1px solid #c4d0c4; border-radius: 2px; color: var(--primary-dark); font-size: 10px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; }
+        .divider { height: 0; margin: 0; border-top: 1px solid var(--border); }
+        .update-next { text-align: left; }
+        .update-next .btn { display: inline-flex !important; margin-top: 12px !important; text-decoration: none; }
+        .update-next h2 { font-size: 32px; }
+        .update-next p { max-width: 610px; }
         @media (max-width: 768px) {
-            .updates-title {
-                font-size: 2rem;
-            }
-            
-            .update-section {
-                padding: 1.5rem;
-            }
-            
-            .update-section h2 {
-                font-size: 1.5rem;
-            }
-            
-            .update-section h3 {
-                font-size: 1.25rem;
-            }
-            
-            .update-section p,
-            .update-section li {
-                font-size: 1rem;
-            }
+            .updates-page { padding: 108px 0 72px; }
+            .updates-container { width: calc(100% - 36px); }
+            .updates-title { font-size: 42px; }
+            .update-section { padding: 26px 0 30px; }
+            .update-section h2 { font-size: 23px; }
+            .update-section h3 { font-size: 14px; }
+            .update-section p, .update-section li { font-size: 13px; }
+        }
+        @media (max-width: 390px) {
+            .updates-title { font-size: 36px; }
+            .update-section h2 { font-size: 21px; }
         }
     </style>
 </head>
@@ -169,22 +69,25 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <a href="index.html" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none;">
-                    <img src="onetask-logo.png" alt="OneTaskAssistant" class="logo">
-                    <span class="logo-text">OneTaskAssistant</span>
-                </a>
+            <a href="index.html" class="nav-logo" aria-label="1task home">
+                <img src="onetask-logo.png" alt="" class="logo">
+                <span class="logo-text">1task</span>
+            </a>
+            <div class="nav-menu" id="site-navigation">
+                <a href="index.html#intelligence" class="nav-link">Why 1task</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link nav-dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="how-menu">How it works <span class="nav-chevron" aria-hidden="true">⌄</span></button>
+                    <div class="nav-dropdown-menu" id="how-menu" hidden>
+                        <a href="/how-it-works/" class="dropdown-link"><strong>The 1task approach</strong><span>Capture, understand, prioritize, act.</span></a>
+                        <a href="/products/365/" class="dropdown-link"><strong>1task 365</strong><span>Intelligent productivity for work.</span></a>
+                        <a href="/products/personal/" class="dropdown-link"><strong>1task Personal</strong><span>Intelligent productivity for life.</span></a>
+                    </div>
+                </div>
+                <a href="updates.html" class="nav-link" aria-current="page">Updates</a>
             </div>
-            <div class="nav-menu">
-                <a href="index.html#features" class="nav-link">Features</a>
-                <a href="index.html#how-it-works" class="nav-link">How It Works</a>
-                <a href="updates.html" class="nav-link" style="color: #6366f1; font-weight: 600;">Updates</a>
-            </div>
-            <div class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-navigation">
+                <span></span><span></span>
+            </button>
         </div>
     </nav>
 
@@ -192,13 +95,17 @@
     <section class="updates-page">
         <div class="updates-container">
             <div class="updates-header">
-                <h1 class="updates-title">Recent Updates & Improvements</h1>
-                <p class="updates-date">September 1, 2026</p>
+                <h1 class="updates-title">Product Updates</h1>
+                <p class="updates-intro">A running list of releases and improvements, ordered newest first.</p>
             </div>
 
             <!-- 1Task Desktop Notes for Mac Update -->
-            <div class="update-section">
+            <div class="update-section" id="personal-desktop">
                 <h2>1Task Desktop Notes for Mac Update</h2>
+                <div class="update-dates" aria-label="Update dates">
+                    <div><span>Completed</span><span class="date-unrecorded">Not recorded</span></div>
+                    <div><span>Added</span><time datetime="2026-09-01">September 1, 2026</time></div>
+                </div>
                 <div class="status-badge">Available for Mac</div>
                 <p>A new version of 1Task Desktop Notes for Mac is available with a smoother way to capture and manage your notes.</p>
                 <ul>
@@ -213,8 +120,12 @@
             <div class="divider"></div>
 
             <!-- 1Task Notes Desktop App -->
-            <div class="update-section">
+            <div class="update-section" id="personal-notes-app">
                 <h2>1Task Notes Desktop App Now Available</h2>
+                <div class="update-dates" aria-label="Update dates">
+                    <div><span>Completed</span><span class="date-unrecorded">Not recorded</span></div>
+                    <div><span>Added</span><time datetime="2026-08-26">August 26, 2026</time></div>
+                </div>
                 <div class="status-badge">Available for Windows and Mac</div>
                 <p>1Task Notes is now available as a desktop Sticky Notes app for both Windows and Mac.</p>
                 <ul>
@@ -229,8 +140,12 @@
             <div class="divider"></div>
 
             <!-- M365 Copilot Transition -->
-            <div class="update-section">
+            <div class="update-section" id="m365-copilot">
                 <h2>1TaskAssistant Is Moving to Microsoft 365 Copilot</h2>
+                <div class="update-dates" aria-label="Update dates">
+                    <div><span>Completed</span><span class="date-unrecorded">Not recorded</span></div>
+                    <div><span>Added</span><time datetime="2026-08-26">August 26, 2026</time></div>
+                </div>
                 <div class="status-badge">Now available in the M365 Copilot Store</div>
                 <p>We are shutting down the existing 1TaskAssistant web apps and moving the experience to a Microsoft 365 Copilot Agent.</p>
                 <p>1TaskAssistant is now available in the M365 Copilot Store, bringing thought-to-action support directly into the Microsoft 365 experience.</p>
@@ -242,6 +157,10 @@
             <!-- Goals Page & Reflection Assistant Updates -->
             <div class="update-section">
                 <h2>🎯 Comprehensive Goals Page & Reflection Assistant Improvements</h2>
+                <div class="update-dates" aria-label="Update dates">
+                    <div><span>Completed</span><span class="date-unrecorded">Not recorded</span></div>
+                    <div><span>Added</span><time datetime="2026-01-11">January 11, 2026</time></div>
+                </div>
                 <div class="status-badge">✅ Live in Production</div>
                 <p>A major update spanning the Reflection Assistant (chat), Goals page technical fixes, and visual design enhancements.</p>
                 
@@ -292,6 +211,10 @@
             <!-- Habits Page & Chat Modal Updates -->
             <div class="update-section">
                 <h2>🎯 Habits Page Improvements</h2>
+                <div class="update-dates" aria-label="Update dates">
+                    <div><span>Completed</span><span class="date-unrecorded">Not recorded</span></div>
+                    <div><span>Added</span><time datetime="2026-01-11">January 11, 2026</time></div>
+                </div>
                 
                 <h3>Better Layout & Navigation</h3>
                 <ul>
@@ -312,6 +235,10 @@
             <!-- Chat Modal Dark Mode -->
             <div class="update-section">
                 <h2>💬 Chat Modal Dark Mode Support</h2>
+                <div class="update-dates" aria-label="Update dates">
+                    <div><span>Completed</span><span class="date-unrecorded">Not recorded</span></div>
+                    <div><span>Added</span><time datetime="2026-01-11">January 11, 2026</time></div>
+                </div>
                 <p>Your AI Assistant interface now fully supports your theme preferences!</p>
                 
                 <h3>What Changed</h3>
@@ -331,6 +258,10 @@
             <!-- Technical Highlights -->
             <div class="update-section">
                 <h2>Technical Highlights</h2>
+                <div class="update-dates" aria-label="Update dates">
+                    <div><span>Completed</span><span class="date-unrecorded">Not recorded</span></div>
+                    <div><span>Added</span><time datetime="2026-01-11">January 11, 2026</time></div>
+                </div>
                 <ul>
                     <li>Enhanced CSS architecture using theme variables for better maintainability</li>
                     <li>Improved responsive design for the habits interface</li>
@@ -341,21 +272,13 @@
 
             <div class="divider"></div>
 
-            <!-- Deployment Status -->
-            <div class="update-section">
-                <h2>Deployment Status</h2>
-                <div class="status-badge">✅ Live in Production</div>
-                <ul style="margin-top: 1.5rem;">
-                    <li><strong>Production:</strong> app.1taskassistant.com</li>
-                </ul>
-                <p>All updates have been deployed to production via automated GitHub Actions workflows.</p>
-            </div>
-
-            <div class="divider"></div>
-
             <!-- Google Sign-In -->
             <div class="update-section">
                 <h2>🎉 Major Feature: Google Sign-In Now Available!</h2>
+                <div class="update-dates" aria-label="Update dates">
+                    <div><span>Completed</span><span class="date-unrecorded">Not recorded</span></div>
+                    <div><span>Added</span><time datetime="2026-01-04">January 4, 2026</time></div>
+                </div>
                 <p>We've expanded our authentication options to give you more flexibility in how you access OneTask Assistant. You can now sign in using:</p>
                 <ul>
                     <li><strong>Work Email</strong> - Microsoft Entra ID for organizational accounts</li>
@@ -378,6 +301,10 @@
             <!-- Enhanced Navigation -->
             <div class="update-section">
                 <h2>Enhanced Navigation: Direct Access to Notes App</h2>
+                <div class="update-dates" aria-label="Update dates">
+                    <div><span>Completed</span><span class="date-unrecorded">Not recorded</span></div>
+                    <div><span>Added</span><time datetime="2026-01-04">January 4, 2026</time></div>
+                </div>
                 <p>We've added a convenient <strong>Notes</strong> link to the sidebar that intelligently routes you to the correct environment:</p>
                 <ul>
                     <li>Automatically detects whether you're on dev, staging, or production</li>
@@ -391,6 +318,10 @@
             <!-- Quick Sign-Out -->
             <div class="update-section">
                 <h2>Improved User Experience: Quick Sign-Out</h2>
+                <div class="update-dates" aria-label="Update dates">
+                    <div><span>Completed</span><span class="date-unrecorded">Not recorded</span></div>
+                    <div><span>Added</span><time datetime="2026-01-04">January 4, 2026</time></div>
+                </div>
                 <p>You can now sign out directly from the app without navigating away:</p>
                 <ul>
                     <li><strong>Sign-Out Button</strong> added to the user badge in the sidebar</li>
@@ -404,6 +335,10 @@
             <!-- Cleaner Onboarding -->
             <div class="update-section">
                 <h2>UX Refinement: Cleaner Onboarding Redirect</h2>
+                <div class="update-dates" aria-label="Update dates">
+                    <div><span>Completed</span><span class="date-unrecorded">Not recorded</span></div>
+                    <div><span>Added</span><time datetime="2026-01-04">January 4, 2026</time></div>
+                </div>
                 <p>We've improved the experience when users need to complete onboarding or resolve access issues:</p>
                 <ul>
                     <li><strong>Automatic Logout:</strong> Users are now signed out before being redirected to the onboarding app</li>
@@ -417,6 +352,10 @@
             <!-- Technical Improvements -->
             <div class="update-section">
                 <h2>Technical Improvements Behind the Scenes</h2>
+                <div class="update-dates" aria-label="Update dates">
+                    <div><span>Completed</span><span class="date-unrecorded">Not recorded</span></div>
+                    <div><span>Added</span><time datetime="2026-01-04">January 4, 2026</time></div>
+                </div>
                 
                 <h3>Authentication Infrastructure</h3>
                 <ul>
@@ -441,26 +380,6 @@
                 </ul>
             </div>
 
-            <div class="divider"></div>
-
-            <!-- Deployment Status -->
-            <div class="update-section">
-                <h2>Deployment Status</h2>
-                <div class="status-badge">✅ Live in Production</div>
-                <ul style="margin-top: 1.5rem;">
-                    <li><strong>Production:</strong> app.1taskassistant.com</li>
-                </ul>
-                <p>All updates have been deployed to production via automated GitHub Actions workflows.</p>
-            </div>
-
-            <div class="divider"></div>
-
-            <!-- What's Next -->
-            <div class="update-section" style="text-align: center; background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);">
-                <h2>What's Next?</h2>
-                <p>We're continuously working to improve your OneTask experience. Have feedback or suggestions? We'd love to hear from you!</p>
-                <a href="index.html#download" class="btn btn-primary" style="margin-top: 1.5rem; display: inline-block; text-decoration: none;">Get Started with OneTask</a>
-            </div>
         </div>
     </section>
 
@@ -469,8 +388,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="onetask-logo.png" alt="OneTaskAssistant" class="logo">
-                    <span class="logo-text">OneTaskAssistant</span>
+                    <img src="onetask-logo.png" alt="" class="logo">
+                    <span class="logo-text">1task</span>
                 </div>
                 <div class="footer-links">
                     <a href="#" class="footer-link">Privacy</a>
@@ -480,12 +399,12 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 idea3 LLC. OneTaskAssistant. All Rights Reserved.</p>
+                <p>&copy; 2026 idea3 LLC. OneTaskAssistant. All Rights Reserved.</p>
                 <img src="idea3-logo.png" alt="idea3 LLC" class="idea3-logo">
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=5" defer></script>
 </body>
 </html>
