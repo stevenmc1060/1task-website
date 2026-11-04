@@ -1,0 +1,6 @@
+node_modules/
+studio/node_modules/
+studio/.sanity/
+studio/dist/
+.DS_Store
+**/.DS_Store
