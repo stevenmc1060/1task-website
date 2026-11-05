@@ -45,7 +45,7 @@
     };
 
     const renderPost = async (slug) => {
-        const post = await querySanity(`*[_type == "post" && slug.current == $slug][0]{title, excerpt, publishedAt, mainImage, body, "author": author->name}`, { slug });
+        const post = await querySanity(`*[_type == "post" && slug.current == $slug][0]{title, excerpt, publishedAt, mainImage, body, audioTitle, audioDescription, audioDuration, "podcastAudioUrl": podcastAudio.asset->url, "author": author->name}`, { slug });
         if (!post) {
             statusElement.textContent = 'Article not found.';
             return;
@@ -55,6 +55,12 @@
             <a class="learn-back" href="/learn/">← All articles</a>
             <header><p class="eyebrow">${escapeHtml(post.author || '1task')}</p><h1>${escapeHtml(post.title)}</h1><p class="learn-article-meta">${formatDate(post.publishedAt)}</p>${post.excerpt ? `<p class="learn-article-deck">${escapeHtml(post.excerpt)}</p>` : ''}</header>
             ${imageUrl(post.mainImage) ? `<img class="learn-article-image" src="${imageUrl(post.mainImage)}" alt="${escapeHtml(post.mainImage.alt || '')}">` : ''}
+            ${post.podcastAudioUrl ? `<section class="learn-audio" aria-labelledby="podcast-audio-title">
+                <div class="learn-audio-heading"><div><p class="eyebrow">Listen to this article</p><h2 id="podcast-audio-title">${escapeHtml(post.audioTitle || post.title)}</h2></div>${post.audioDuration ? `<span>${escapeHtml(post.audioDuration)}</span>` : ''}</div>
+                ${post.audioDescription ? `<p>${escapeHtml(post.audioDescription)}</p>` : ''}
+                <audio controls preload="metadata"><source src="${escapeHtml(post.podcastAudioUrl)}" type="audio/mpeg">Your browser does not support the audio player.</audio>
+                <a class="learn-audio-download" href="${escapeHtml(post.podcastAudioUrl)}" download>Download MP3 <span aria-hidden="true">↓</span></a>
+            </section>` : ''}
             <div class="learn-article-body">${renderBlocks(post.body)}</div>
         </article>`;
     };
